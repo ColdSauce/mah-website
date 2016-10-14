@@ -1,18 +1,7 @@
-@font-face {
-    font-family: 'open_sansregular';
-    src: url('../fonts/OpenSans-Regular-webfont.eot');
-    src: url('../fonts/OpenSans-Regular-webfont.eot?#iefix') format('embedded-opentype'),
-         url('../fonts/OpenSans-Regular-webfont.woff') format('woff'),
-         url('../fonts/OpenSans-Regular-webfont.ttf') format('truetype');
-    font-weight: normal;
-    font-style: normal;
-}
-
-
 body {
 	/*background: #1a3a4e;*/
 	color: #E4F1FE;
-	font-family: open_sansregular, Helvetica, sans-serif;
+	font-family: 'Open Sans', Helvetica, sans-serif;
 	width: 50%;
 	background: linear-gradient(to bottom, #0a4871, #1a3a4e);
 	margin: 50px auto;
