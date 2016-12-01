@@ -2,6 +2,7 @@ var writeChar = function(someOutput, characterToWrite) {
     someOutput.append(characterToWrite); 
 }
 
+var delayFunction = function(INITIAL_MULTIPLIER) { return Math.round(Math.random() * INITIAL_MULTIPLIER) + 10};
 var writePrompt = function(listOfPrompts, listOfAnswers, someOutput, someContent) {
     if(someContent == undefined || someContent == "") {
         var toOutput = null;
@@ -34,13 +35,12 @@ var writePrompt = function(listOfPrompts, listOfAnswers, someOutput, someContent
 
     }
     var INITIAL_MULTIPLIER = 20;
-    var delayFunction = function() { return Math.round(Math.random() * INITIAL_MULTIPLIER) + 10};
     setTimeout(function() {
         var currentChar = someContent.charAt(0);
         someOutput.addClass("active");
         writeChar(someOutput, currentChar);
         writePrompt(listOfPrompts, listOfAnswers, someOutput, someContent.substring(1));
-    }, delayFunction());
+    }, delayFunction(INITIAL_MULTIPLIER));
 }
 
 var cleanup = function() {
@@ -51,6 +51,7 @@ var cleanup = function() {
 }
 
 $(document).ready(function() {
+    
     var prompts = $('.prompts p');
     var answers = $('.answers p')
     var promptContents = new Array();
@@ -67,4 +68,4 @@ $(document).ready(function() {
     cleanup();
 
     writePrompt(promptContents, answerContents);
-})
+});
