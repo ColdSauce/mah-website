@@ -9,3 +9,7 @@ body {
 .active:after {
   content: '_';
 } 
+
+body {
+	line-height: 1;
+}
