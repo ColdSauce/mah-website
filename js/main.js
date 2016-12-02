@@ -127,7 +127,7 @@ function rgbToHex(r, g, b) {
 
 
 var writeChar = function(someOutput, characterToWrite, nextCharToWrite, finalCharacter) {
-    someOutput.append(characterToWrite, nextCharToWrite, finalCharacter); 
+    someOutput.html(someOutput.html() + characterToWrite + nextCharToWrite + finalCharacter); 
 };
 
 var globalMultiplier = 1;
@@ -135,6 +135,7 @@ var delayFunction = function(INITIAL_MULTIPLIER) {
     globalMultiplier = 1/Math.pow(2,globalMultiplier);
     return Math.round(Math.random() * INITIAL_MULTIPLIER * globalMultiplier);
 };
+// Right now, isAnswer isn't really being used. But I'll try 
 var writePrompt = function(listOfPrompts, listOfAnswers, someOutput, someContent, colorOfText, isAnswer) {
     var toOutput = null;
     var newAnswers =  null;
@@ -220,7 +221,3 @@ $(document).ready(function() {
 
     writePrompt(promptContents, answerContents, undefined, undefined, INITIAL_GREEN);
 });
-
-
-
-
