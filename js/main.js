@@ -1,5 +1,5 @@
 /*
-The following code is taken from this stackoverflow question https://stackoverflow.com/questions/17433015/change-the-hue-of-a-rgb-color-in-javascript
+The following hue changing code is taken from this stackoverflow question https://stackoverflow.com/questions/17433015/change-the-hue-of-a-rgb-color-in-javascript
 */
 // Changes the RGB/HEX temporarily to a HSL-Value, modifies that value 
 // and changes it back to RGB/HEX.
