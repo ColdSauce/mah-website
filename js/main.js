@@ -142,7 +142,7 @@ var writePrompt = function(listOfPrompts, listOfAnswers, someOutput, someContent
         promptDom.append("<br>");
         promptDom.css("color", colorOfText);
         $('termcontainer').append(promptDom);
-        writePrompt(newPrompts, newAnswers, promptDom, toOutput,changeHue(colorOfText, 2));
+        writePrompt(newPrompts, newAnswers, promptDom, toOutput,changeHue(colorOfText, 1));
         return;
     } else if(someContent == "") {
         var toOutput = null;
@@ -172,7 +172,7 @@ var writePrompt = function(listOfPrompts, listOfAnswers, someOutput, someContent
         promptDom.append("<br>");
         promptDom.css("color", colorOfText);
         $('.termcontainer').append(promptDom);
-        writePrompt(newPrompts, newAnswers, promptDom, toOutput, changeHue(colorOfText, 2));
+        writePrompt(newPrompts, newAnswers, promptDom, toOutput, changeHue(colorOfText, 4));
         return;
 
     }
