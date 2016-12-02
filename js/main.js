@@ -1,9 +1,11 @@
 /*
 The following hue changing code is taken from this stackoverflow question https://stackoverflow.com/questions/17433015/change-the-hue-of-a-rgb-color-in-javascript
+It is modified to make the code more readable.
 */
 // Changes the RGB/HEX temporarily to a HSL-Value, modifies that value 
 // and changes it back to RGB/HEX.
 
+var INITIAL_GREEN = "#55ff55";
 function changeHue(rgb, degree) {
     var hsl = rgbToHSL(rgb);
     hsl.h += degree;
@@ -36,7 +38,7 @@ function rgbToHSL(rgb) {
         h = 0,
         s = 0;
 
-    if (delta == 0) {
+    if (delta === 0) {
         h = 0;
     }
     else if (cMax == r) {
@@ -49,18 +51,18 @@ function rgbToHSL(rgb) {
         h = 60 * (((r - g) / delta) + 4);
     }
 
-    if (delta == 0) {
+    if (delta === 0) {
         s = 0;
     }
     else {
-        s = (delta/(1-Math.abs(2*l - 1)))
+        s = (delta/(1-Math.abs(2*l - 1)));
     }
 
     return {
         h: h,
         s: s,
         l: l
-    }
+    };
 }
 
 // expects an object and returns a string
@@ -126,7 +128,7 @@ function rgbToHex(r, g, b) {
 
 var writeChar = function(someOutput, characterToWrite, nextCharToWrite, finalCharacter) {
     someOutput.append(characterToWrite, nextCharToWrite, finalCharacter); 
-}
+};
 
 var globalMultiplier = 1;
 var delayFunction = function(INITIAL_MULTIPLIER) {
@@ -134,20 +136,24 @@ var delayFunction = function(INITIAL_MULTIPLIER) {
     return Math.round(Math.random() * INITIAL_MULTIPLIER * globalMultiplier);
 };
 var writePrompt = function(listOfPrompts, listOfAnswers, someOutput, someContent, colorOfText, isAnswer) {
-    if(someContent == undefined) {
+    var toOutput = null;
+    var newAnswers =  null;
+    var newPrompts = null;
+    var promptDom = null;
+    if(someContent === undefined) {
         toOutput = listOfPrompts[0];
         newAnswers = listOfAnswers;
         newPrompts = listOfPrompts.slice(1);
-        var promptDom = $("<span></span>");
+        promptDom = $("<span></span>");
         promptDom.append("<br>");
         promptDom.css("color", colorOfText);
         $('termcontainer').append(promptDom);
         writePrompt(newPrompts, newAnswers, promptDom, toOutput,changeHue(colorOfText, 1));
         return;
-    } else if(someContent == "") {
-        var toOutput = null;
-        var newPrompts = null;
-        var newAnswers = null;
+    } else if(someContent === "") {
+        toOutput = null;
+        newPrompts = null;
+        newAnswers = null;
         
         if(listOfPrompts.length < listOfAnswers.length) {
             toOutput = listOfAnswers[0];
@@ -157,7 +163,7 @@ var writePrompt = function(listOfPrompts, listOfAnswers, someOutput, someContent
             toOutput = listOfPrompts[0];
             newAnswers = listOfAnswers;
             newPrompts = listOfPrompts.slice(1);
-        } else if(listOfPrompts.length != 0){
+        } else if(listOfPrompts.length !== 0){
             toOutput = listOfPrompts[0];
             newAnswers = listOfAnswers;
             newPrompts = listOfPrompts.slice(1);
@@ -165,10 +171,12 @@ var writePrompt = function(listOfPrompts, listOfAnswers, someOutput, someContent
             return;
         }
 
-        if(isAnswer) {     someOutput.addClass("answer") }
+        if(isAnswer) {    
+            someOutput.addClass("answer"); 
+        }
         someOutput.removeClass("active");
 
-        var promptDom = $("<span></span>");
+        promptDom = $("<span></span>");
         promptDom.append("<br>");
         promptDom.css("color", colorOfText);
         $('.termcontainer').append(promptDom);
@@ -186,18 +194,19 @@ var writePrompt = function(listOfPrompts, listOfAnswers, someOutput, someContent
         writePrompt(listOfPrompts, listOfAnswers, someOutput, someContent.substring(3), colorOfText);
         someOutput.removeClass("active");
     }, delayFunction(INITIAL_MULTIPLIER));
-}
+};
 
 var cleanup = function() {
     var prompts = $('.prompts');
     var answers = $('.answers');
     prompts.remove();
     answers.remove();
-}
+};
 
 $(document).ready(function() {
+
     var prompts = $('.prompts p');
-    var answers = $('.answers p')
+    var answers = $('.answers p');
     promptContents = prompts.map(function(index) {
         var currentText = $(this).text();
         return currentText;
@@ -209,7 +218,7 @@ $(document).ready(function() {
     });
     cleanup();
 
-    writePrompt(promptContents, answerContents, undefined, undefined, "#55ff55");
+    writePrompt(promptContents, answerContents, undefined, undefined, INITIAL_GREEN);
 });
 
 
