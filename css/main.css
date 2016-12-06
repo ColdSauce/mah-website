@@ -8,6 +8,12 @@ body {
 	line-height: 1.1;
 }
 
+a, a:visited, a:link {
+	color: #55bb55;
+	text-decoration: none;
+}
+
+
 .output {
   color: white;
 }
