@@ -1,16 +1,16 @@
 body {
-  background-color: #111111;
-  color: #55ff55;
-  font-family: monospace;
-  margin-left: 40px;
+	opacity: 0.95;
+  	background-color: #111111;
+  	color: #55ff55;
+  	font-family: monospace;
+  	position: relative;
+	margin-left: 40px;
+	line-height: 1.1;
 }
+
 .output {
   color: white;
 }
 .active:after {
   content: '_';
 } 
-
-body {
-	line-height: 1;
-}
