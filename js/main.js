@@ -141,7 +141,6 @@ var writePrompt = function(listOfPrompts, listOfAnswers, someOutput, someContent
     var newAnswers =  null;
     var newPrompts = null;
     var promptDom = null;
-    console.log("runs forever");
     if(listOfPrompts.length === 0 && listOfAnswers.length === 0 && someContent.length === 0) {
         var ht = $(".termcontainer").html();
         $(".termcontainer").html(linkify(ht));
