@@ -28,7 +28,7 @@ const textToShow = [
     "My Github has some of my favorite projects:",
     "LINK       https://github.com/coldsauce",
     "",
-    "To reach out, either email me or Tweet at me (@stayfun)",
+    "To reach out, either email me or Tweet at me (@stayfun_)",
 ]
 
 
